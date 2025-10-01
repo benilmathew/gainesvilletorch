@@ -1,3 +1,13 @@
+#home,
+#details,
+#faith,
+#event,
+#team,
+#everyone,
+#donation,
+#contact {
+  scroll-margin-top: 96px;
+}
 :root {
   /* Light, welcoming base */
   --bg: #ffffff;
@@ -13,7 +23,11 @@
 /* lock into light theme per user preference */
 
 * { box-sizing: border-box; }
-html, body { height: 100%; }
+html, body {
+  min-height: 100%;
+  height: auto;
+  overflow: visible;
+}
 body {
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   margin: 0;
@@ -26,36 +40,60 @@ body {
 }
 
 .site-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: rgba(255,255,255,.8);
+  background: linear-gradient(90deg, rgba(0,93,170,.08) 0%, rgba(255,255,255,.85) 100%);
   backdrop-filter: saturate(1.2) blur(10px);
-  border-bottom: 1px solid rgba(2,6,23,.08);
+  border-bottom: 2px solid var(--brand);
+  box-shadow: 0 2px 16px rgba(0,93,170,.07);
+  padding-bottom: 2px;
+}
+
+@media (min-width: 680px) {
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
 }
 .nav-wrap {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 14px 20px;
+  padding: 22px 28px 18px 28px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
 }
 .brand {
-  color: var(--text);
+  color: var(--brand);
   text-decoration: none;
   font-weight: 800;
   letter-spacing: .2px;
   display: inline-flex;
   align-items: center;
   gap: 10px;
+  font-size: 1.3em;
+  transition: color .2s, box-shadow .2s;
 }
-.brand:before {
-  content: "";
-  width: 18px; height: 18px; border-radius: 50%;
-  background: radial-gradient(circle at 40% 40%, #fff 2px, var(--brand) 8px, rgba(239,177,76,.9) 12px, rgba(0,0,0,0) 13px);
-  box-shadow: 0 0 18px rgba(245,158,11,.7), 0 0 4px rgba(96,165,250,.5) inset;
+.brand-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fff 0%, var(--brand) 80%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,93,170,.10);
+  margin-right: 6px;
+}
+.brand-icon img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: contain;
+}
+.brand:hover {
+  color: #0f172a;
+  box-shadow: 0 2px 12px rgba(0,93,170,.12);
 }
 .menu-toggle {
   display: none;
@@ -77,32 +115,41 @@ body {
 .primary-nav {
   display: flex;
   gap: 12px;
+  background: rgba(0,93,170,.04);
+  border-radius: 10px;
+  padding: 4px 12px;
+  box-shadow: 0 1px 8px rgba(0,93,170,.04);
 }
 .primary-nav a {
   color: var(--text);
   text-decoration: none;
   font-weight: 600;
-  opacity: .9;
-  padding: 8px 10px;
+  opacity: .92;
+  padding: 8px 14px;
   border-radius: 8px;
-  transition: background .2s ease, color .2s ease;
+  transition: background .2s, color .2s, box-shadow .2s;
 }
 .primary-nav a:hover {
-  background: rgba(0,93,170,.1);
-  color: var(--text);
+  background: linear-gradient(90deg, rgba(0,93,170,.12), rgba(239,177,76,.08));
+  color: var(--brand);
+  box-shadow: 0 2px 8px rgba(0,93,170,.08);
 }
 .primary-nav a.active {
-  background: rgba(0,93,170,.14);
-  color: var(--text);
+  background: rgba(0,93,170,.18);
+  color: var(--brand);
+  box-shadow: 0 2px 8px rgba(0,93,170,.10);
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 32px 20px 64px;
+  padding: 96px 20px 64px 20px; /* top padding for sticky header */
 }
 
 .container { scroll-margin-top: 80px; }
+#home {
+  scroll-margin-top: 96px;
+}
 
 .section { display: block; }
 .section + .section { margin-top: 48px; }
@@ -225,7 +272,16 @@ body {
 .download .icon { font-size: 28px; }
 .download .meta span { color: var(--muted); font-size: 14px; }
 
-.site-footer { text-align: center; padding: 30px 20px; color: var(--muted); }
+.site-footer {
+  text-align: center;
+  padding: 38px 20px 32px 20px;
+  color: var(--muted);
+  background: linear-gradient(90deg, rgba(0,93,170,.06) 0%, rgba(239,177,76,.08) 100%);
+  font-size: 1.1em;
+  border-top: 2px solid var(--brand);
+  box-shadow: 0 -2px 16px rgba(0,93,170,.07);
+  margin-top: 48px;
+}
 
 .reveal { opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
