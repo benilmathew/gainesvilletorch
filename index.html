@@ -16,12 +16,12 @@
       <a class="brand" href="#home" aria-label="Go to Home" data-route>
        Gainesville Torch
       </a>
-      <button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation" onclick="document.getElementById('primary-nav').classList.toggle('open'); this.setAttribute('aria-expanded', document.getElementById('primary-nav').classList.contains('open'))">
+  <button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation" id="menuToggle">
         <span class="bar"></span>
         <span class="bar"></span>
         <span class="bar"></span>
       </button>
-      <nav id="primary-nav" class="primary-nav" role="navigation" aria-hidden="true">
+      <nav id="primary-nav" class="primary-nav" role="navigation">
         <a href="#home" data-route>Home</a>
         <a href="#details" data-route>About</a>
         <a href="#faith" data-route>Statement of Faith</a>

@@ -47,31 +47,49 @@
 
   function setupMobileMenu() {
     const toggle = select('.menu-toggle');
-    const nav = select(NAV_SELECTOR);
-    if (!toggle || !nav) return;
-    toggle.addEventListener('click', () => {
+    const nav = select('#primary-nav');
+    const header = select('.site-header');
+    if (!toggle || !nav || !header) return;
+
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
       const isOpen = nav.classList.toggle('open');
       toggle.setAttribute('aria-expanded', String(isOpen));
+      header.style.background = isOpen ? 'var(--bg)' : '';
+      if (isOpen) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
     });
-    // Close when clicking outside on small screens
-    document.addEventListener('click', (e) => {
-      if (!nav.classList.contains('open')) return;
-      const withinMenu = e.target.closest(NAV_SELECTOR) || e.target.closest('.menu-toggle');
-      if (!withinMenu) closeMobileMenu();
+
+    nav.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A') {
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
     });
+
+    // Close on window resize
     function onResize() {
-      if (window.innerWidth > 680) closeMobileMenu();
+      if (window.innerWidth > 680) {
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
     }
     window.addEventListener('resize', onResize);
+
+    // Close on escape key
     function closeOnEscape(e) {
-      if (e.key === 'Escape') closeMobileMenu();
+      if (e.key === 'Escape') {
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
     }
     document.addEventListener('keydown', closeOnEscape);
-    window.closeMobileMenu = closeMobileMenu; // for internal calls
-    function closeMobileMenu() {
-      nav.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
-    }
   }
 
   function setupRevealOnScroll() {
