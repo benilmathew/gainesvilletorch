@@ -105,15 +105,7 @@
     sections.forEach(section => observer.observe(section));
   }
 
-  function setupDonateCTA() {
-    document.addEventListener('click', (e) => {
-      const button = e.target.closest('[data-action="donate"]');
-      if (!button) return;
-      e.preventDefault();
-      // Simple modal substitute
-      alert('Thank you for your interest! Donation feature coming soon.');
-    });
-  }
+  function setupDonateCTA() { /* no-op now - donate links go directly */ }
 
   function init() {
     setupNavRouting();
