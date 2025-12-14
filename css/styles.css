@@ -397,3 +397,15 @@ body {
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
 }
+.donate-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.donate-qr {
+  width: 120px;
+  height: auto;
+  border-radius: 8px;
+}
