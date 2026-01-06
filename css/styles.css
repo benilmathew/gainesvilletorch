@@ -397,6 +397,20 @@ body {
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
 }
+.table-wrap { overflow-x: auto; margin-top: 12px; }
+.forms-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+.forms-table th, .forms-table td { text-align: left; padding: 10px 12px; border: 1px solid rgba(2,6,23,.06); vertical-align: top; }
+.forms-table thead th { background: rgba(0,93,170,.04); font-weight: 700; }
+/* Make the Form No. column wider and prevent wrapping */
+.forms-table th:nth-child(3), .forms-table td:nth-child(3) {
+  width: 160px;
+  white-space: nowrap;
+}
+@media (max-width: 680px) {
+  .forms-table th:nth-child(3), .forms-table td:nth-child(3) {
+    white-space: normal; /* allow wrapping on very small screens if needed */
+  }
+}
 .donate-actions {
   display: flex;
   align-items: center;
@@ -408,4 +422,19 @@ body {
   width: 120px;
   height: auto;
   border-radius: 8px;
+}
+
+/* Download CTA styles for resources page */
+.download-cta { margin-top: 18px; }
+.download-cta .card { display: block; padding: 18px; background: linear-gradient(90deg, rgba(0,93,170,.06), rgba(239,177,76,.03)); border: 1px solid rgba(0,93,170,.06); }
+.cta-inner { display: flex; gap: 16px; align-items: center; }
+.cta-icon { font-size: 40px; line-height: 1; }
+.cta-meta { flex: 1; }
+.cta-title { display: block; font-size: 1.1em; margin-bottom: 6px; }
+.cta-lead { margin: 0 0 12px 0; color: var(--muted); }
+.download-cta .btn-primary { padding: 10px 14px; border-radius: 8px; }
+
+@media (max-width: 680px) {
+  .cta-inner { flex-direction: column; align-items: flex-start; }
+  .cta-icon { font-size: 34px; }
 }
