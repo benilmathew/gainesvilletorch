@@ -272,6 +272,76 @@ body {
 .download .icon { font-size: 28px; }
 .download .meta span { color: var(--muted); font-size: 14px; }
 
+/* CTA grid for resources page */
+.cta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.cta {
+  background: var(--bg-elev);
+  border: 1px solid rgba(2,6,23,.06);
+  border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  align-items: stretch;
+}
+.cta-inner {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.cta-icon {
+  font-size: 36px;
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(0,93,170,.08), rgba(239,177,76,.06));
+}
+.cta-meta { flex: 1; }
+.cta-title { display: block; margin-bottom: 6px; font-weight: 800; }
+.cta-lead { margin: 0 0 10px 0; color: var(--muted); }
+.cta .btn { margin-top: 6px; }
+
+/* Ensure CTAs stack on small screens */
+@media (max-width: 760px) {
+  .cta-grid { grid-template-columns: 1fr; }
+  .cta-inner { align-items: center; }
+  .cta-icon { font-size: 28px; width: 44px; height: 44px; }
+}
+
+/* Improve table readability and prevent Form No wrapping on wide screens */
+.forms-table { border-collapse: collapse; width: 100%; min-width: 680px; }
+.forms-table th, .forms-table td { text-align: left; padding: 10px 12px; border-bottom: 1px solid rgba(2,6,23,.04); vertical-align: top; }
+.forms-table thead th { background: rgba(0,93,170,.03); font-weight: 700; }
+.forms-table tbody tr:nth-child(even) { background: rgba(0,0,0,.01); }
+.forms-table td:nth-child(3) { width: 160px; white-space: nowrap; }
+
+/* Make the table container scroll on narrow viewports but remove forced min-width */
+.table-wrap { overflow-x: auto; margin-top: 12px; }
+@media (max-width: 720px) {
+  .forms-table { min-width: 0; }
+  .forms-table td:nth-child(3) { white-space: normal; }
+}
+
+/* Extra responsive polish for very small screens and better CTA behavior */
+.download-cta .card { width: 100%; }
+.cta { min-height: 110px; align-items: center; }
+.cta .btn { white-space: nowrap; }
+.forms-table td { word-break: break-word; }
+
+@media (max-width: 420px) {
+  .cta-inner { flex-direction: column; align-items: center; text-align: center; }
+  .cta-icon { margin-bottom: 8px; }
+  .cta-meta { width: 100%; }
+  .cta .btn { width: 100%; justify-content: center; }
+  .container { padding-left: 12px; padding-right: 12px; }
+  .breadcrumb { font-size: 13px; }
+  .section > h2 { font-size: 20px; }
+}
+
 .site-footer {
   text-align: center;
   padding: 38px 20px 32px 20px;
@@ -426,15 +496,22 @@ body {
 
 /* Download CTA styles for resources page */
 .download-cta { margin-top: 18px; }
-.download-cta .card { display: block; padding: 18px; background: linear-gradient(90deg, rgba(0,93,170,.06), rgba(239,177,76,.03)); border: 1px solid rgba(0,93,170,.06); }
-.cta-inner { display: flex; gap: 16px; align-items: center; }
-.cta-icon { font-size: 40px; line-height: 1; }
+.download-cta .card { display: block; padding: 12px; background: linear-gradient(90deg, rgba(0,93,170,.04), rgba(239,177,76,.02)); border: 1px solid rgba(0,93,170,.06); }
+.cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.cta { padding: 10px; background: rgba(255,255,255,0.02); border-radius: 8px; }
+.cta-inner { display: flex; gap: 12px; align-items: center; }
+.cta-icon { font-size: 36px; line-height: 1; }
 .cta-meta { flex: 1; }
-.cta-title { display: block; font-size: 1.1em; margin-bottom: 6px; }
-.cta-lead { margin: 0 0 12px 0; color: var(--muted); }
+.cta-title { display: block; font-size: 1.05em; margin-bottom: 6px; }
+.cta-lead { margin: 0 0 10px 0; color: var(--muted); }
 .download-cta .btn-primary { padding: 10px 14px; border-radius: 8px; }
 
-@media (max-width: 680px) {
+@media (max-width: 900px) {
+  .cta-grid { grid-template-columns: 1fr; }
+  .cta-inner { flex-direction: row; }
+}
+
+@media (max-width: 480px) {
   .cta-inner { flex-direction: column; align-items: flex-start; }
-  .cta-icon { font-size: 34px; }
+  .cta-icon { font-size: 32px; }
 }
